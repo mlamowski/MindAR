@@ -44,14 +44,17 @@
             shader: "gif",
             autoplay: "true"
           });
+          <!--
           mySoundPlayer.removeAttribute('sound');
           mySoundPlayer.setAttribute('sound', {
             src: "#" + source + "Sound"
           })
 
-          el.play();
           mySoundPlayer.components.sound.playSound();
+          -->
           clicked = true;
+          el.play();
+
           console.log("clicked ist " + clicked);
 
         });
@@ -97,15 +100,16 @@
   </a-assets>
 
   <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
+  <!--
   <a-entity id="soundPlayer" sound="src: #change; loop: true;" ></a-entity>
-
+  -->
   <a-entity id="example-target"  mindar-image-target="targetIndex: 0" >
     <!-- <a-gltf-model rotation="0 0 0 " position="0 -0.25 0.3" src="#rechteck" animation-mixer=""> -->
-    <a-entity id="myBallon" geometry="primitive:plane;" scale="1 1.5 1" position="0 0 0.1" material="shader:gif;src:#ballon;autoplay:false" play-on-click ></a-entity>
+    <a-entity id="myBallon" geometry="primitive:plane;" scale="1 1.5 1" position="0 0 0.1" material="shader:gif;src:#ballon;autoplay:false;" play-on-click ></a-entity>
   </a-entity>
 
   <a-entity mindar-image-target="targetIndex: 1">
-    <a-entity id="lovers" class="clickable"  geometry="primitive:plane;" scale="1 1.5 1" position="0 0 0.1" material="shader:gif;src:#lovers;autoplay:false" play-on-click ></a-entity>
+    <a-entity id="lovers" class="clickable"  geometry="primitive:plane;" scale="1 1.5 1" position="0 0 0.1" material="shader:gif;src:#lovers;autoplay:false;" play-on-click ></a-entity>
     <!-- <a-video src="#lovers_vid" scale="1 1.5 1" position="0 0 0.1" play-on-click> </a-video> -->
 </a-entity>
 
