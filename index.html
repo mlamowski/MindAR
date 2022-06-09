@@ -20,8 +20,13 @@
   <!-- Quelle: https://jsfiddle.net/Lwtzjnk9/1/ für png sequenzen -->
 
   <script>
+    //Letzter Stand
+    // Als
+
     // clickable
     AFRAME.registerComponent("play-on-click", {
+
+      //Iwie geht bei einem klick alles an?
 
       init: function() {
         var mySoundPlayer = document.querySelector('#soundPlayer');
@@ -39,7 +44,7 @@
             shader: "gif",
             autoplay: "true"
           });
-
+          mySoundPlayer.removeAttribute('sound');
           mySoundPlayer.setAttribute('sound', {
             src: "#" + source + "Sound"
           })
@@ -84,17 +89,19 @@
     <img id="8406A" src="8406A.jpg" />
     <img id="8435" src="8435.jpg" />
     <img id="pusheen" src="pusheen.gif" />
-    <audio id="loversSound" src="wee-sound-effect.mp3" preload="auto" ></audio>
+    <audio id="myBallonSound" src="wee-sound-effect.mp3" preload="auto" ></audio>
+    <audio id="loversSound" src="Duck-quack.mp3" preload="auto" ></audio>
+
     <a-asset-item id="rechteck" src="./bones_test2.gltf"></a-asset-item>
     <video id="lovers_vid" src="8406A.mp4" crossorigin="anonymous" autoplay loop muted playsinline webkit-playsinline> </video>
   </a-assets>
 
   <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
-  <a-entity id="soundPlayer" sound="src: #change; loop: true;" play-on-click ></a-entity>
+  <a-entity id="soundPlayer" sound="src: #change; loop: true;" ></a-entity>
 
   <a-entity id="example-target"  mindar-image-target="targetIndex: 0" >
     <!-- <a-gltf-model rotation="0 0 0 " position="0 -0.25 0.3" src="#rechteck" animation-mixer=""> -->
-    <a-entity id="myBallon" geometry="primitive:plane;" scale="1 1.5 1" position="0 0 0.1" material="shader:gif;src:#ballon;" ></a-entity>
+    <a-entity id="myBallon" geometry="primitive:plane;" scale="1 1.5 1" position="0 0 0.1" material="shader:gif;src:#ballon;autoplay:false" play-on-click ></a-entity>
   </a-entity>
 
   <a-entity mindar-image-target="targetIndex: 1">
