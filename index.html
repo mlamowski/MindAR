@@ -19,6 +19,57 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Quelle: https://jsfiddle.net/Lwtzjnk9/1/ für png sequenzen -->
 
+  <script>
+    // clickable
+    AFRAME.registerComponent("play-on-click", {
+
+      init: function() {
+        var mySoundPlayer = document.querySelector('#soundPlayer');
+        var clicked = new Boolean(false);
+        var el = this.el;
+        var source = el.getAttribute('id');
+
+        console.log("clicked ist " + clicked);
+
+        document.body.addEventListener("click", e => {
+
+          console.log("clicked ist " + clicked);
+
+          el.setAttribute('material', {
+            shader: "gif",
+            autoplay: "true"
+          });
+
+          mySoundPlayer.setAttribute('sound', {
+            src: "#" + source + "Sound"
+          })
+
+          el.play();
+          mySoundPlayer.components.sound.playSound();
+          clicked = true;
+          console.log("clicked ist " + clicked);
+
+        });
+        document.body.addEventListener("targetFound", e => {
+          console.log("detected!");
+          if(clicked == true) {
+
+            mySoundPlayer.components.sound.playSound();
+            el.play();
+          }
+
+        });
+        document.body.addEventListener("targetLost", e => {
+          console.log("target lost!");
+          el.pause();
+          mySoundPlayer.components.sound.stopSound();
+
+        });
+      }
+    });
+
+  </script>
+
 </head>
 <body>
 
