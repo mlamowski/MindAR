@@ -19,39 +19,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Quelle: https://jsfiddle.net/Lwtzjnk9/1/ für png sequenzen -->
 
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const sceneEl = document.querySelector('a-scene');
-      const arSystem = sceneEl.systems["mindar-image-system"];
-      const myTarget = document.getElementById("example-target");
-      const myBallon = document.getElementById("myBallon");
-
-
-      // arReady event triggered when ready
-      sceneEl.addEventListener("arReady", (event) => {
-        console.log("MindAR is ready")
-        myBallon.pause();
-
-      });
-      myTarget.addEventListener("targetFound", event => {
-        console.log("target found");
-        myBallon.play();
-      });
-      // detect target lost
-      myTarget.addEventListener("targetLost", event => {
-        console.log("target lost");
-        myBallon.pause();
-      });
-
-    });
-
-    const examplePlane = document.querySelector('#example-plane');
-    examplePlane.addEventListener("click", event => {
-      console.log("plane click");
-      examplePlane.pause();
-    });
-  </script>
 </head>
 <body>
 
@@ -91,40 +58,7 @@
 </a-scene>
 
 
-
-<script>
-  // detect target found
-
-
-
-
-  /*
-  // detect
-  AFRAME.registerComponent("detect-target", {
-    init: function() {
-      document.body.addEventListener("targetFound", e => {
-        console.log("detected!");
-        const src = this.e.getAttribute("src");
-        document.querySelector(src).play();
-        document.querySelector(src).playSound();
-
-      });
-    }
-  });
-
-  // clickable
-  AFRAME.registerComponent("play-on-click", {
-    init: function() {
-      document.body.addEventListener("click", e => {
-        const src = this.el.getAttribute("src");
-        document.querySelector(src).play();
-      });
-    }
-  });
-
-  */
-  //TESTTEST
-</script>
+  <!--TESTTEST-->
 
 </body>
 </html>
