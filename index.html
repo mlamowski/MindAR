@@ -72,21 +72,18 @@
       myTarget2.addEventListener("targetFound", event => {
         console.log("lovers found");
 
-        lovers.setAttribute('material', {
-          shader: "video",
-          pause: "true",
-          muted: "true"
-        });
+        const video = document.getElementById("lovers_vid");
+        video.pause();
+
+        console.log(video.muted);
 
         myTarget2.addEventListener("click", e => {
 
-          lovers.setAttribute('material', {
-            shader: "video",
-            pause: "false",
-            muted: "false",
-            volume: '1'
-          });
+          video.muted = !video.muted;
 
+          video.play();
+
+          console.log(video.muted);
 
         });
       });
@@ -194,14 +191,14 @@
 
 
     <a-asset-item id="rechteck" src="./bones_test2.gltf"></a-asset-item>
-    <video id="lovers_vid" src="8406A.mp4" crossorigin="anonymous" autoplay loop muted playsinline webkit-playsinline> </video>
+    <video id="lovers_vid" src="8406A.mp4" crossorigin="anonymous" muted autoplay loop playsinline webkit-playsinline> </video>
   </a-assets>
 
   <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
 
   <a-entity id="example-target"  mindar-image-target="targetIndex: 0" >
     <!-- <a-gltf-model rotation="0 0 0 " position="0 -0.25 0.3" src="#rechteck" animation-mixer=""> -->
-    <a-entity id="myBallon" class="clickable" geometry="primitive:plane;" scale="1 1.5 1" position="0 0 0.1" material="shader:gif;src:#ballon;autoplay:false;" play-on-clickkk ></a-entity>
+    <a-entity id="myBallon" class="clickable" geometry="primitive:plane;" scale="1 1.5 1" position="0 0 0.1" material="shader:gif;src:#ballon;autoplay:false" play-on-clickkk ></a-entity>
   </a-entity>
 
   <a-entity id="example-target2" mindar-image-target="targetIndex: 1">
