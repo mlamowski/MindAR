@@ -2,162 +2,74 @@
 document.addEventListener("DOMContentLoaded", function() {
   const sceneEl = document.querySelector('a-scene');
   const arSystem = sceneEl.systems["mindar-image-system"];
-  const myTarget = document.getElementById("example-target");
-  var myBallon = myTarget.children[0];
-
-  const myTarget2 = document.getElementById("example-target2");
-  var lovers = myTarget2.children[0];
-  var gltfmodel = myTarget2.children[1];
-
-
-  const myTarget3 = document.getElementById("example-target3");
-  var dancebear = myTarget3.children[0];
-
-  const video = document.getElementById("lovers_vid");
-  video.paused = !video.paused;
-
-  console.log("video tags" + video);
-  console.log("video paused:" +  video.paused);
+  
+  //Ballon
+  const BallonTarget = document.getElementById("ballon-target");
+  const ballon_video = document.getElementById("ballon_vid");
+  const confetti_model = document.getElementById("confetti_model");
+  ballon_video.paused = !ballon_video.paused;
+  var clicked = new Boolean(false);
 
 
-  /*
-  myTarget.addEventListener("targetFound", event => {
-    console.log("ballon found");
-
-    myTarget.addEventListener("click", e => {
-
-      console.log("lovers clicked");
-
-      myBallon.removeAttribute('material');
-      myBallon.setAttribute('material', {
-        shader: "gif",
-        autoplay: "true",
-        src: '#ballon'
-      });
-      myBallon.play();
-
-    });
-
-  });
-  // detect target lost
-  myTarget.addEventListener("targetLost", event => {
-    console.log("ballon lost");
-  });
-
-  */
-  //FUNKTIONIERT!!
-
-  myTarget2.addEventListener("targetFound", event => {
+  BallonTarget.addEventListener("targetFound", event => {
     console.log("lovers found");
-
-    gltfmodel.setAttribute('animation-mixer', {
+    confetti_model.setAttribute('animation-mixer', {
       clip: 'null'
     })
-
-    video.pause();
-    console.log(video);
-    video.currentTime = 0;
-    console.log(video.currentTime);
+    ballon_video.currentTime = 0;
+    ballon_video.pause();
+    ballon_video.muted = !ballon_video.muted;
 
 
-    myTarget2.addEventListener("click", e => {
+    BallonTarget.addEventListener("click", e => {
 
-      video.muted = !video.muted;
-
-      video.play();
-      gltfmodel.setAttribute('animation-mixer', {
+      ballon_video.play();
+      confetti_model.setAttribute('animation-mixer', {
         clip: '*'
       })
-      console.log(gltfmodel.getAttribute('animation-mixer'));
+
+    });
+  });
+  // detect target lost
+  BallonTarget.addEventListener("targetLost", event => {
+
+    ballon_video.pause();
+    confetti_model.setAttribute('animation-mixer', {
+      clip: 'null'
+    })
+    ballon_video.muted = !ballon_video.muted;
+
+  });
+  
+  //lovers
+  const LoversTarget = document.getElementById("lovers-target");
+  const lovers_video = document.getElementById("lovers_vid");
+  lovers_video.paused = !lovers_video.paused;
+
+  LoversTarget.addEventListener("targetFound", event => {
+    console.log("lovers found");
+    lovers_video.currentTime = 0;
+    lovers_video.pause();
+
+    LoversTarget.addEventListener("click", e => {
+
+      lovers_video.muted = !lovers_video.muted;
+      lovers_video.play();
 
 
     });
   });
   // detect target lost
-  myTarget2.addEventListener("targetLost", event => {
+  LoversTarget.addEventListener("targetLost", event => {
 
-    video.muted = !video.muted;
-    console.log(video.currentTime);
-    video.pause();
+    lovers_video.muted = !lovers_video.muted;
+    lovers_video.pause();
   });
-
-  /*
-  myTarget3.addEventListener("targetFound", event => {
-    console.log("ballon found");
-
-    myTarget3.addEventListener("click", e => {
-
-      console.log("lovers clicked");
-
-      dancebear.removeAttribute('material');
-      dancebear.setAttribute('material', {
-        shader: "gif",
-        autoplay: "true",
-        src: '#dancebaer'
-      });
-      dancebear.play();
-
-    });
-
-  });
-  // detect target lost
-  myTarget3.addEventListener("targetLost", event => {
-    console.log("ballon lost");
-  });
-
-   */
+  
+  //Dancebear
+  const DanceTarget = document.getElementById("dance-target");
+  const dance_video = document.getElementById("dancebear_vid");
+  dance_video.paused = !dance_video.paused;
+  
+ 
 });
-
-
-
-/*
-// clickable
-AFRAME.registerComponent("play-on-click", {
-
-  //Iwie geht bei einem klick alles an?
-
-  init: function() {
-    var clicked = new Boolean(false);
-    var el = this.el;
-
-    console.log("clicked ist " + clicked);
-    console.log("halloooo");
-
-    document.body.addEventListener("click", e => {
-
-      console.log("halloooo 2");
-
-
-      console.log("clicked ist " + clicked);
-
-      el.setAttribute('material', {
-        shader: "gif",
-        autoplay: "true"
-      });
-      clicked = true;
-      el.play();
-
-      console.log("clicked ist " + clicked);
-
-    });
-    document.body.addEventListener("targetFound", e => {
-
-      console.log("halloooo 3");
-
-      console.log("detected!");
-      if(clicked == true) {
-
-        el.play();
-      }
-
-    });
-    document.body.addEventListener("targetLost", e => {
-      console.log("target lost!");
-      console.log("halloooo 4");
-
-      el.pause();
-
-    });
-  }
-});
-*/
