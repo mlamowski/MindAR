@@ -36,12 +36,15 @@
       const myTarget2 = document.getElementById("example-target2");
       var lovers = myTarget2.children[0];
 
+
+
+      console.log(lovers.getAttribute('material'));
       const myTarget3 = document.getElementById("example-target3");
       var dancebear = myTarget3.children[0];
 
       console.log("start");
 
-
+      /*
       myTarget.addEventListener("targetFound", event => {
         console.log("ballon found");
 
@@ -65,19 +68,25 @@
         console.log("ballon lost");
       });
 
-
+      */
       myTarget2.addEventListener("targetFound", event => {
         console.log("lovers found");
 
+        lovers.setAttribute('material', {
+          shader: "video",
+          pause: "true",
+          muted: "true"
+        });
+
         myTarget2.addEventListener("click", e => {
 
-          console.log("lovers clicked");
-
           lovers.setAttribute('material', {
-            shader: "gif",
-            autoplay: "true"
+            shader: "video",
+            pause: "false",
+            muted: "false",
+            volume: '1'
           });
-          lovers.play();
+
 
         });
       });
@@ -86,6 +95,7 @@
         console.log("lovers lost");
       });
 
+      /*
       myTarget3.addEventListener("targetFound", event => {
         console.log("ballon found");
 
@@ -108,6 +118,8 @@
       myTarget3.addEventListener("targetLost", event => {
         console.log("ballon lost");
       });
+
+       */
     });
 
 
