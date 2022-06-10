@@ -82,8 +82,10 @@
           clip: 'null'
         })
 
-        console.log(gltfmodel.getAttribute('animation-mixer'));
         video.pause();
+        console.log(video);
+        video.currentTime = 0;
+        console.log(video.currentTime);
 
 
         myTarget2.addEventListener("click", e => {
@@ -103,7 +105,7 @@
       myTarget2.addEventListener("targetLost", event => {
 
         video.muted = !video.muted;
-
+        console.log(video.currentTime);
         video.pause();
       });
 
