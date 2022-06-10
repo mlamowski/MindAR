@@ -4,14 +4,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const arSystem = sceneEl.systems["mindar-image-system"];
   
   //Ballon
-  const BallonTarget = document.getElementById("ballon-target");
+  const ballonTarget = document.getElementById("ballon-target");
   const ballon_video = document.getElementById("ballon_vid");
   const confetti_model = document.getElementById("confetti_model");
   ballon_video.paused = !ballon_video.paused;
-  var clicked = new Boolean(false);
 
-
-  BallonTarget.addEventListener("targetFound", event => {
+  ballonTarget.addEventListener("targetFound", event => {
     console.log("lovers found");
     confetti_model.setAttribute('animation-mixer', {
       clip: 'null'
@@ -21,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
     ballon_video.muted = !ballon_video.muted;
 
 
-    BallonTarget.addEventListener("click", e => {
+    ballonTarget.addEventListener("click", e => {
 
       ballon_video.play();
       confetti_model.setAttribute('animation-mixer', {
@@ -31,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
   // detect target lost
-  BallonTarget.addEventListener("targetLost", event => {
+  ballonTarget.addEventListener("targetLost", event => {
 
     ballon_video.pause();
     confetti_model.setAttribute('animation-mixer', {
@@ -42,34 +40,46 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   
   //lovers
-  const LoversTarget = document.getElementById("lovers-target");
+  const loversTarget = document.getElementById("lovers-target");
   const lovers_video = document.getElementById("lovers_vid");
   lovers_video.paused = !lovers_video.paused;
 
-  LoversTarget.addEventListener("targetFound", event => {
-    console.log("lovers found");
+  loversTarget.addEventListener("targetFound", event => {
     lovers_video.currentTime = 0;
     lovers_video.pause();
+    lovers_video.muted = !ballon_video.muted;
 
-    LoversTarget.addEventListener("click", e => {
-
-      lovers_video.muted = !lovers_video.muted;
+    loversTarget.addEventListener("click", e => {
       lovers_video.play();
-
 
     });
   });
   // detect target lost
-  LoversTarget.addEventListener("targetLost", event => {
+  loversTarget.addEventListener("targetLost", event => {
 
     lovers_video.muted = !lovers_video.muted;
     lovers_video.pause();
   });
   
   //Dancebear
-  const DanceTarget = document.getElementById("dance-target");
+  const danceTarget = document.getElementById("dance-target");
   const dance_video = document.getElementById("dancebear_vid");
   dance_video.paused = !dance_video.paused;
+
+  danceTarget.addEventListener("targetFound", event => {
+    dance_video.currentTime = 0;
+    dance_video.pause();
+    dance_video.muted = !dance_video.muted;
+
+    danceTarget.addEventListener("click", e => {
+      dance_video.play();
+
+    });
+  });
+  // detect target lost
+  danceTarget.addEventListener("targetLost", event => {
+    dance_video.muted = !dance_video.muted;
+    dance_video.pause();
+  });
   
- 
 });
