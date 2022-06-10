@@ -35,14 +35,18 @@
 
       const myTarget2 = document.getElementById("example-target2");
       var lovers = myTarget2.children[0];
+      var gltfmodel = myTarget2.children[1];
 
 
-
-      console.log(lovers.getAttribute('material'));
       const myTarget3 = document.getElementById("example-target3");
       var dancebear = myTarget3.children[0];
 
-      console.log("start");
+      const video = document.getElementById("lovers_vid");
+      video.paused = !video.paused;
+
+      console.log("video tags" + video);
+      console.log("video paused:" +  video.paused);
+
 
       /*
       myTarget.addEventListener("targetFound", event => {
@@ -69,27 +73,38 @@
       });
 
       */
+      //FUNKTIONIERT!!
+
       myTarget2.addEventListener("targetFound", event => {
         console.log("lovers found");
 
-        const video = document.getElementById("lovers_vid");
+        gltfmodel.setAttribute('animation-mixer', {
+          clip: 'null'
+        })
+
+        console.log(gltfmodel.getAttribute('animation-mixer'));
         video.pause();
 
-        console.log(video.muted);
 
         myTarget2.addEventListener("click", e => {
 
           video.muted = !video.muted;
 
           video.play();
+          gltfmodel.setAttribute('animation-mixer', {
+            clip: '*'
+          })
+          console.log(gltfmodel.getAttribute('animation-mixer'));
 
-          console.log(video.muted);
 
         });
       });
       // detect target lost
       myTarget2.addEventListener("targetLost", event => {
-        console.log("lovers lost");
+
+        video.muted = !video.muted;
+
+        video.pause();
       });
 
       /*
@@ -190,8 +205,8 @@
     <img id="pusheen" src="pusheen.gif" />
 
 
-    <a-asset-item id="rechteck" src="./bones_test2.gltf"></a-asset-item>
-    <video id="lovers_vid" src="8406A.mp4" crossorigin="anonymous" muted autoplay loop playsinline webkit-playsinline> </video>
+    <a-asset-item id="confetti" src="./imported_mp4_ballon_2.gltf"></a-asset-item>
+    <video id="lovers_vid" src="8406A.mp4" crossorigin="anonymous" muted autoplay="false" loop playsinline webkit-playsinline> </video>
   </a-assets>
 
   <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: ${customFields.libVersion}; objects: .clickable"></a-camera>
@@ -202,7 +217,9 @@
   </a-entity>
 
   <a-entity id="example-target2" mindar-image-target="targetIndex: 1">
-    <a-entity id="loverss" class="clickable"  geometry="primitive:plane;" scale="1 1.5 1" position="0 0 0.1" material="shader:video;src:#lovers_vid;" ></a-entity>
+    <a-entity id="loverss" class="clickable"  geometry="primitive:plane;" scale="1 1.5 1" position="0 0 0.1" material="shader:video;src:#lovers_vid" ></a-entity>
+    <a-gltf-model rotation="0 0 0 " position="0 -0.25 0.3" src="#confetti" animation-mixer="">
+
     <!-- <a-video src="#lovers_vid" scale="1 1.5 1" position="0 0 0.1" play-on-click> </a-video> -->
 </a-entity>
 
