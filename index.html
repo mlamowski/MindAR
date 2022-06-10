@@ -199,12 +199,10 @@
 <a-scene mindar-image="imageTargetSrc: ./targets.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
   <a-assets>
     <img id="card" src="8359_BG2.png" />
-    <img id="ballon" src="8359.gif" />
-    <img id="dancebaer" src="8435.gif" />
-    <img id="lovers" src="8406A.gif" />
-    <img id="8406A" src="8406A.jpg" />
-    <img id="8435" src="8435.jpg" />
-    <img id="pusheen" src="pusheen.gif" />
+    <img id="ballon" src="src/gif/8359.gif" />
+    <img id="dancebaer" src="src/gif/8435.gif" />
+    <img id="lovers" src="src/gif/8406A.gif" />
+
 
 
     <a-asset-item id="confetti" src="./imported_mp4_ballon_2.gltf"></a-asset-item>
@@ -222,8 +220,8 @@
     <a-entity id="loverss" class="clickable"  geometry="primitive:plane;" scale="1 1.5 1" position="0 0 0.1" material="shader:video;src:#lovers_vid" ></a-entity>
     <a-gltf-model rotation="0 0 0 " position="0 -0.25 0.3" src="#confetti" animation-mixer="">
 
-    <!-- <a-video src="#lovers_vid" scale="1 1.5 1" position="0 0 0.1" play-on-click> </a-video> -->
-</a-entity>
+      <!-- <a-video src="#lovers_vid" scale="1 1.5 1" position="0 0 0.1" play-on-click> </a-video> -->
+  </a-entity>
 
 
   <a-entity  id="example-target3" mindar-image-target="targetIndex: 2">
@@ -232,7 +230,7 @@
 </a-scene>
 
 
-  <!--TESTTEST-->
+<!--TESTTEST-->
 
 </body>
 </html>
