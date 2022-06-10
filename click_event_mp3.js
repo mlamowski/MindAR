@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
   //lovers
   const loversTarget = document.getElementById("lovers-target");
   const lovers_video = document.getElementById("lovers_vid");
+  //Herzen gltf
   lovers_video.paused = !lovers_video.paused;
 
   loversTarget.addEventListener("targetFound", event => {
@@ -64,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
   //Dancebear
   const danceTarget = document.getElementById("dance-target");
   const dance_video = document.getElementById("dancebear_vid");
+  //Musiknoten gltf
   dance_video.paused = !dance_video.paused;
 
   danceTarget.addEventListener("targetFound", event => {
